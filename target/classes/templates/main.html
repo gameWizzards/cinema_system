@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Cinema System</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" th:href="@{style.css}" />
+</head>
+<body>
+
+	<!-- header -->
+
+	<div style="display: flex;">
+		<div id="left">
+			<form action="/getSessions" method="post">
+				<div align="center" th:object="${test}" style="margin-bottom: 30px;">
+
+					<select id="testOrder" name="films">
+						<option value="null">Select Film</option>
+						<option th:each="test : ${tests}" th:value="${test.id}"
+							th:text="${test.id}+' : '+${test.title}"></option>
+					</select> <input type="submit" value="Поиск сеансов" />
+				</div>
+
+			</form>
+			<form action="/check" method="post">
+				<div align="center" th:object="${seans}">
+					<select id="testOrder" name="seans">
+						<option value="">Select Session</option>
+						<option th:each="seans : ${sessionListByFilm}"
+							th:value="${seans.id}" th:text="${seans.id}+' : '+${seans.time}"></option>
+					</select> <input type="submit" value="Выбрать" />
+				</div>
+			</form>
+			<br> <br>
+			<div style="display: flex">
+				<h4 align="center">Price:</h4>
+				<p th:text="${price}"></p>
+			</div>
+			<div style="display: flex">
+				<h4 align="center">VIP Price:</h4>
+				<p th:text="${vip_price}"></p>
+			</div>
+			<br> <br>
+			<div>
+				<h4 align="center">Already Booked</h4>
+				<p th:text="${booked}"></p>
+			</div>
+
+		</div>
+
+		<div id="center">
+
+
+			<form action="/selectSeats" method="get">
+				<div class="container">
+					<div class="sc">
+						<h1>SCREEN</h1>
+						<br>
+						<h5 th:text="${film}">Film</h5>
+					</div>
+					<div align="center" class="row justify-content-center"
+						style="display: flex;">
+
+
+						<div class="col-sm-1">
+							<div class="cust-rows">
+								<ul>
+									<li>ROW 1</li>
+									<li>ROW 2</li>
+									<li>ROW 3</li>
+									<li>ROW 4</li>
+									<li>ROW 5</li>
+									<li>ROW 6</li>
+									<li>ROW 7</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-5 screen" align="center">
+
+							<section id="seats">
+								<div align="center">
+									<div class="col-sm-12" align="center">
+										<input id="seat-1" class="seat-select" type="checkbox"
+											value="R1-1" name="seat"> <label for="seat-1"
+											class="seat">1</label> <input id="seat-2" class="seat-select"
+											type="checkbox" value="R1-2" name="seat"> <label
+											for="seat-2" class="seat">2</label> <input id="seat-3"
+											class="seat-select" type="checkbox" value="R1-3" name="seat" />
+										<label for="seat-3" class="seat">3</label> <input id="seat-4"
+											class="seat-select" type="checkbox" value="R1-4" name="seat" />
+										<label for="seat-4" class="seat">4</label> <input id="seat-5"
+											class="seat-select" type="checkbox" value="R1-5" name="seat" />
+										<label for="seat-5" class="seat">5</label> <input id="seat-6"
+											class="seat-select" type="checkbox" value="R1-6" name="seat" />
+										<label for="seat-6" class="seat">6</label> <input id="seat-7"
+											class="seat-select" type="checkbox" value="R1-7" name="seat" />
+										<label for="seat-7" class="seat">7</label> <input id="seat-8"
+											class="seat-select" type="checkbox" value="R1-8" name="seat" />
+										<label for="seat-8" class="seat">8</label> <input id="seat-9"
+											class="seat-select" type="checkbox" value="R1-9" name="seat" />
+										<label for="seat-9" class="seat">9</label> <input id="seat-10"
+											class="seat-select" type="checkbox" value="R1-10" name="seat" />
+										<label for="seat-10" class="seat">10</label>
+									</div>
+
+									<div class="col-sm-12">
+										<input id="seat-11" class="seat-select" type="checkbox"
+											value="R2-1" name="seat" /> <label for="seat-11"
+											class="seat">1</label> <input id="seat-12"
+											class="seat-select" type="checkbox" value="R2-2" name="seat" />
+										<label for="seat-12" class="seat">2</label> <input
+											id="seat-13" class="seat-select" type="checkbox" value="R2-3"
+											name="seat" /> <label for="seat-13" class="seat">3</label> <input
+											id="seat-14" class="seat-select" type="checkbox" value="R2-4"
+											name="seat" /> <label for="seat-14" class="seat">4</label> <input
+											id="seat-15" class="seat-select" type="checkbox" value="R2-5"
+											name="seat" /> <label for="seat-15" class="seat">5</label> <input
+											id="seat-16" class="seat-select" type="checkbox" value="R2-6"
+											name="seat" /> <label for="seat-16" class="seat">6</label> <input
+											id="seat-17" class="seat-select" type="checkbox" value="R2-7"
+											name="seat" /> <label for="seat-17" class="seat">7</label> <input
+											id="seat-18" class="seat-select" type="checkbox" value="R2-8"
+											name="seat" /> <label for="seat-18" class="seat">8</label> <input
+											id="seat-19" class="seat-select" type="checkbox" value="R2-9"
+											name="seat" /> <label for="seat-19" class="seat">9</label> <input
+											id="seat-20" class="seat-select" type="checkbox"
+											value="R2-10" name="seat" /> <label for="seat-20"
+											class="seat">10</label>
+									</div>
+
+									<div class="col-sm-12">
+										<input id="seat-21" class="seat-select" type="checkbox"
+											value="R3-1" name="seat" /> <label for="seat-21"
+											class="seat">1</label> <input id="seat-22"
+											class="seat-select" type="checkbox" value="R3-2" name="seat" />
+										<label for="seat-22" class="seat">2</label> <input
+											id="seat-23" class="seat-select" type="checkbox" value="R3-3"
+											name="seat" /> <label for="seat-23" class="seat">3</label> <input
+											id="seat-24" class="seat-select" type="checkbox" value="R3-4"
+											name="seat" /> <label for="seat-24" class="seat">4</label> <input
+											id="seat-25" class="seat-select" type="checkbox" value="R3-5"
+											name="seat" /> <label for="seat-25" class="seat">5</label> <input
+											id="seat-26" class="seat-select" type="checkbox" value="R3-6"
+											name="seat" /> <label for="seat-26" class="seat">6</label> <input
+											id="seat-27" class="seat-select" type="checkbox" value="R3-7"
+											name="seat" /> <label for="seat-27" class="seat">7</label> <input
+											id="seat-28" class="seat-select" type="checkbox" value="R3-8"
+											name="seat" /> <label for="seat-28" class="seat">8</label> <input
+											id="seat-29" class="seat-select" type="checkbox" value="R3-9"
+											name="seat" /> <label for="seat-29" class="seat">9</label> <input
+											id="seat-30" class="seat-select" type="checkbox"
+											value="R3-10" name="seat" /> <label for="seat-30"
+											class="seat">10</label>
+									</div>
+
+									<div class="col-sm-12">
+										<input id="seat-41" class="seat-select" type="checkbox"
+											value="R4-1" name="seat" /> <label for="seat-41"
+											class="seat">1</label> <input id="seat-42"
+											class="seat-select" type="checkbox" value="R4-2" name="seat" />
+										<label for="seat-42" class="seat">2</label> <input
+											id="seat-43" class="seat-select" type="checkbox" value="R4-3"
+											name="seat" /> <label for="seat-43" class="seat">3</label> <input
+											id="seat-44" class="seat-select" type="checkbox" value="R4-4"
+											name="seat" /> <label for="seat-44" class="seat">4</label> <input
+											id="seat-45" class="seat-select" type="checkbox" value="R4-5"
+											name="seat" /> <label for="seat-45" class="seat">5</label> <input
+											id="seat-46" class="seat-select" type="checkbox" value="R4-6"
+											name="seat" /> <label for="seat-46" class="seat">6</label> <input
+											id="seat-47" class="seat-select" type="checkbox" value="R4-7"
+											name="seat" /> <label for="seat-47" class="seat">7</label> <input
+											id="seat-48" class="seat-select" type="checkbox" value="R4-8"
+											name="seat" /> <label for="seat-48" class="seat">8</label> <input
+											id="seat-49" class="seat-select" type="checkbox" value="R4-9"
+											name="seat" /> <label for="seat-49" class="seat">9</label> <input
+											id="seat-50" class="seat-select" type="checkbox"
+											value="R4-10" name="seat" /> <label for="seat-50"
+											class="seat">10</label>
+									</div>
+
+									<div class="col-sm-12">
+										<input id="seat-51" class="seat-select" type="checkbox"
+											value="R5-1" name="seat" /> <label for="seat-51"
+											class="seat">1</label> <input id="seat-52"
+											class="seat-select" type="checkbox" value="R5-2" name="seat" />
+										<label for="seat-52" class="seat">2</label> <input
+											id="seat-53" class="seat-select" type="checkbox" value="R5-3"
+											name="seat" /> <label for="seat-53" class="seat">3</label> <input
+											id="seat-54" class="seat-select" type="checkbox" value="R5-4"
+											name="seat" /> <label for="seat-54" class="seat">4</label> <input
+											id="seat-55" class="seat-select" type="checkbox" value="R5-5"
+											name="seat" /> <label for="seat-55" class="seat">5</label> <input
+											id="seat-56" class="seat-select" type="checkbox" value="R5-6"
+											name="seat" /> <label for="seat-56" class="seat">6</label> <input
+											id="seat-57" class="seat-select" type="checkbox" value="R5-7"
+											name="seat" /> <label for="seat-57" class="seat">7</label> <input
+											id="seat-58" class="seat-select" type="checkbox" value="R5-8"
+											name="seat" /> <label for="seat-58" class="seat">8</label> <input
+											id="seat-59" class="seat-select" type="checkbox" value="R5-9"
+											name="seat" /> <label for="seat-59" class="seat">9</label> <input
+											id="seat-60" class="seat-select" type="checkbox"
+											value="R5-10" name="seat" /> <label for="seat-60"
+											class="seat">10</label>
+									</div>
+
+									<div class="col-sm-12">
+										<input id="seat-61" class="seat-select" type="checkbox"
+											value="R6-1" name="seat" /> <label for="seat-61"
+											class="seat">1</label> <input id="seat-62"
+											class="seat-select" type="checkbox" value="R6-2" name="seat" />
+										<label for="seat-62" class="seat">2</label> <input
+											id="seat-63" class="seat-select" type="checkbox" value="R6-3"
+											name="seat" /> <label for="seat-63" class="seat">3</label> <input
+											id="seat-64" class="seat-select" type="checkbox" value="R6-4"
+											name="seat" /> <label for="seat-64" class="seat">4</label> <input
+											id="seat-65" class="seat-select" type="checkbox" value="R6-5"
+											name="seat" /> <label for="seat-65" class="seat">5</label> <input
+											id="seat-66" class="seat-select" type="checkbox" value="R6-6"
+											name="seat" /> <label for="seat-66" class="seat">6</label> <input
+											id="seat-67" class="seat-select" type="checkbox" value="R6-7"
+											name="seat" /> <label for="seat-67" class="seat">7</label> <input
+											id="seat-68" class="seat-select" type="checkbox" value="R6-8"
+											name="seat" /> <label for="seat-68" class="seat">8</label> <input
+											id="seat-69" class="seat-select" type="checkbox" value="R6-9"
+											name="seat" /> <label for="seat-69" class="seat">9</label> <input
+											id="seat-70" class="seat-select" type="checkbox"
+											value="R6-10" name="seat" /> <label for="seat-70"
+											class="seat">10</label>
+									</div>
+
+									<div class="col-sm-12">
+										<input id="seat-71" class="seat-select-vip" type="checkbox"
+											value="R7-1" name="seat" /> <label for="seat-71"
+											class="seat">1</label> <input id="seat-72"
+											class="seat-select-vip" type="checkbox" value="R7-2"
+											name="seat" /> <label for="seat-72" class="seat">2</label> <input
+											id="seat-73" class="seat-select-vip" type="checkbox"
+											value="R7-3" name="seat" /> <label for="seat-73"
+											class="seat">3</label> <input id="seat-74"
+											class="seat-select-vip" type="checkbox" value="R7-4"
+											name="seat" /> <label for="seat-74" class="seat">4</label> <input
+											id="seat-75" class="seat-select-vip" type="checkbox"
+											value="R7-5" name="seat" /> <label for="seat-75"
+											class="seat">5</label> <input id="seat-76"
+											class="seat-select-vip" type="checkbox" value="R7-6"
+											name="seat" /> <label for="seat-76" class="seat">6</label> <input
+											id="seat-77" class="seat-select-vip" type="checkbox"
+											value="R7-7" name="seat" /> <label for="seat-77"
+											class="seat">7</label> <input id="seat-78"
+											class="seat-select-vip" type="checkbox" value="R7-8"
+											name="seat" /> <label for="seat-78" class="seat">8</label> <input
+											id="seat-79" class="seat-select-vip" type="checkbox"
+											value="R7-9" name="seat" /> <label for="seat-79"
+											class="seat">9</label> <input id="seat-80"
+											class="seat-select-vip" type="checkbox" value="R7-10"
+											name="seat" /> <label for="seat-80" class="seat">10</label>
+									</div>
+
+									<br> <br> <br>
+									<div class="col-sm-5">
+										<div class="form-group">
+											<input type="submit" value="SELECT" id="button">
+										</div>
+									</div>
+
+
+								</div>
+							</section>
+
+						</div>
+
+					</div>
+				</div>
+			</form>
+
+		</div>
+
+		<div id="right">
+
+			<form action="/passTickets" method="post">
+
+				<div style="margin: 10px; display: flex;" align="left">
+					<h2>Hall:</h2>
+					<p style="color: #DC143C; font-size: 1.5em; font-weight: bold;"
+						th:text="${hall_number}"></p>
+
+				</div>
+				<br>
+				<div style="margin: 10px; display: flex;" align="left">
+					<h4>Your Seats:</h4>
+					<p style="color: #DC143C; font-size: 1.0em; font-weight: bold;"
+						th:text="${seats}"></p>
+
+				</div>
+				<br>
+				<div style="margin: 10px; background: #49D196;">
+					<p>Student</p>
+					<input type="checkbox" value="student"></input>
+				</div>
+				<br>
+				<div style="margin: 10px; display: flex;" align="left">
+
+					<h2>Amount:</h2>
+					<p style="color: #DC143C; font-size: 1.5em; font-weight: bold;"
+						th:text="${amount}"></p>
+				</div>
+				<br>
+				<div align="right" style="margin: 10px;">
+					<button type="submit" value="OK" id="button">OK</button>
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+	<!-- footer -->
+</body>
+</html>
