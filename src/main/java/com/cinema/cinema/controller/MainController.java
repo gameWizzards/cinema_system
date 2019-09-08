@@ -214,10 +214,14 @@ public class MainController {
 	}
 
 	@PostMapping("/passTickets")
-	public String passTickets(Model model) {
+	public String passTickets(Model model, @RequestParam(value = "student", required = false) String checkboxValue) {
 
-		//TODO Вынести в отдельную табличку все бухгалтерские функции
 		
+		if (checkboxValue != null) {
+			amount -= amount/10;
+		}
+		
+		//TODO Вынести в отдельную табличку все бухгалтерские функции
 		sessionsService.addAmount(sessionId, amount);
 
 		return "redirect:/";
